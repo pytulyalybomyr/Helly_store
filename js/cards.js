@@ -4,7 +4,7 @@
             price: 2323,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         },
         {
             id: 2,
@@ -20,7 +20,7 @@
             price: 1290,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         }, {
             id: 4,
             name: 'Yellow Nutritive Mask/Coconut mask41',
@@ -34,7 +34,7 @@
             price: 2309,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         }, {
             id: 6,
             name: 'Yellow Nutritive Mask/Coconut mask6',
@@ -48,7 +48,7 @@
             price: 3244,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         }, {
             id: 8,
             name: 'Yellow Nutritive Mask/Coconut mask8',
@@ -62,14 +62,14 @@
             price: 3232,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         }, {
             id: 10,
             name: 'Yellow Nutritive Mask/Coconut mask10',
             price: 3091,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_2.webp'
         }
     ];
     var productDetails = {
