@@ -200,8 +200,20 @@
 
 
 
-    var itemsPerPage = 6;
+    var itemsPerPage;
+
+    function setItemsPerPage() {
+        if (window.matchMedia("(max-width: 650px)").matches) {
+            itemsPerPage = 4;
+        } else {
+            itemsPerPage = 6;
+        }
+    } // // Викликати функцію при завантаженні сторінки та при зміні розмірів екрану
+    // window.addEventListener('DOMContentLoaded', setItemsPerPage);
+    // window.addEventListener('resize', setItemsPerPage);
     var currentPage = 1;
+
+    setItemsPerPage()
     // Функція для виводу товарів в HTML
 
     // Функція для рендерингу пагінації
@@ -293,6 +305,21 @@
 
     // Функція для оновлення інформації про поточну сторінку та загальну кількість сторінок
 
+    function smt() {
+        Swal.fire({
+            title: "Все Класно!!!",
+            text: "Товар вже в кошику!!!",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonText: "Далі за покупками",
+            cancelButtonText: 'В кошик',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                toggleCart()
+            }
+        });
+    }
 
     // Функція для додавання товару в кошик
     async function addToCart(productId) {
@@ -319,6 +346,7 @@
             // Оновлюємо вивід кошика
             renderCart();
         }
+        smt()
     }
 
     // Функція для отримання даних з Local Storage
@@ -584,7 +612,6 @@
 </div>`;
             productsContainer.appendChild(productElement);
         });
-
         // Виведіть пагінацію
         renderPagination();
         updatePaginationButtonsVisibility(products);
