@@ -1,6 +1,6 @@
     var products = [{
             id: 1,
-            name: 'Yellow Nutritive Mask/Coconut mask1',
+            name: 'Yellow Pure Silver',
             price: 2323,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
@@ -16,7 +16,7 @@
         },
         {
             id: 3,
-            name: 'Yellow Nutritive Mask/Coconut mask3',
+            name: 'Yellow Pure Silver',
             price: 1290,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
@@ -30,7 +30,7 @@
             img: './img/product_1.webp'
         }, {
             id: 5,
-            name: 'Yellow Nutritive Mask/Coconut mask51',
+            name: 'Yellow Pure Silver',
             price: 2309,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
@@ -44,7 +44,7 @@
             img: './img/product_1.webp'
         }, {
             id: 7,
-            name: 'Yellow Nutritive Mask/Coconut mask7',
+            name: 'Yellow Pure Silver',
             price: 3244,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
@@ -58,14 +58,14 @@
             img: './img/product_1.webp'
         }, {
             id: 9,
-            name: 'Yellow Nutritive Mask/Coconut mask9',
+            name: 'Yellow Pure Silver',
             price: 3232,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
             img: './img/product_2.webp'
         }, {
             id: 10,
-            name: 'Yellow Nutritive Mask/Coconut mask10',
+            name: 'Yellow Pure Silver10',
             price: 3091,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
