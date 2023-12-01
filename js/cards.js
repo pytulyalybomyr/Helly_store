@@ -4,7 +4,8 @@
             price: 2323,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         },
         {
             id: 2,
@@ -12,7 +13,8 @@
             price: 2333,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_1.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         },
         {
             id: 3,
@@ -20,75 +22,89 @@
             price: 1290,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 4,
             name: 'Yellow Nutritive Mask/Coconut mask41',
             price: 1423,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_1.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 5,
             name: 'Yellow Pure Silver',
             price: 2309,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 6,
             name: 'Yellow Nutritive Mask/Coconut mask6',
             price: 7424,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_1.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 7,
             name: 'Yellow Pure Silver',
             price: 3244,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 8,
             name: 'Yellow Nutritive Mask/Coconut mask8',
             price: 9331,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_1.webp'
+            img: './img/product_1.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 9,
             name: 'Yellow Pure Silver',
             price: 3232,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }, {
             id: 10,
             name: 'Yellow Pure Silver10',
             price: 3091,
             about: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.',
             catagory: 'Маска',
-            img: './img/product_2.webp'
+            img: './img/product_2.webp',
+            ds: 'Маска поживна ефективно впливає на структуру сухих і схильних до ламкості волосся.'
         }
     ];
-    var productDetails = {
-        1: {
-            description: 'Це опис товару 1'
-        },
-        2: {
-            description: 'Це опис товару 2'
-        },
-        3: {
-            description: 'Це опис товару 3'
-        },
-        4: {
-            description: 'Це опис товару 4'
-        },
-        5: {
-            description: 'Це опис товару 5'
-        },
-    };
+    // async function sendTelegramMessage(message) {
+    //     try {
+    //         const response = await fetch('../php/example.php', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded',
+    //             },
+    //             body: `message=${encodeURIComponent(message)}`,
+    //         });
+
+    //         const data = await response.json();
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.error('Error sending Telegram message:', error);
+    //     }
+    // }
+
+    // // Викликайте цю функцію зі своїм повідомленням
+    // sendTelegramMessage('Ваше повідомлення');
+
+
+    // Приклад використання:
+
 
     function getRandomIndex(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -151,34 +167,47 @@
 
         try {
             var cart = await getCartFromLocalStorage();
+
             cart.forEach(function (item) {
                 var cartItemElement = document.createElement('li');
                 cartItemElement.className = 'cartItem';
                 cartItemElement.innerHTML = `                    
-                    <div class="popup__main">
-                        <img src="${item.img}" alt="">
-                        <div class="popup__main-text">
-                            <h3>ID: ${item.id}</h3>
-                            <h2>${item.name}</h2>
-                            <h3 id="price_${item.id}">${item.price * item.quantity}</h3>
-                        </div>
-                        <div class="popup__main-quantity">
-                            <button onclick="increaseQuantity(${item.id})">+</button>
-                            <h3 id="quantity_${item.id}">${item.quantity}</h3>
-                            <button onclick="decreaseQuantity(${item.id})">-</button>
+                <div class="popup__main">
+                    <img src="${item.img}" alt="">
+                    <div class="popup__main-text">
+                        <h3>ID: ${item.id}</h3>
+                        <h2>${item.name}</h2>
+                        <h3 id="price_${item.id}">${item.price * item.quantity}</h3>
+                    </div>
+                    <div class="popup__main-quantity">
+                        <button onclick="increaseQuantity(${item.id})">+</button>
+                        <h3 id="quantity_${item.id}">${item.quantity}</h3>
+                        <button onclick="decreaseQuantity(${item.id})">-</button>
+                        <button class="delete"  onclick="deleteQuantity(${item.id})">x</button>
+                    </div>
+                </div>`;
 
-                            <button class="delete"  onclick="deleteQuantity(${item.id})">x</button>
-                        </div>
-                    </div>`;
                 cartItemsContainer.appendChild(cartItemElement);
-                displayCartItemCount();
-                // console.log(int(cartItemElement.length)) 
-                // var itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+                // Отримайте дані для відправки в телеграм (приклад)
+                const telegramData = {
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                };
+
+                // Відправте дані в телеграм для кожного елемента кошика
+                // sendTelegramMessage(telegramData);
             });
+
+            displayCartItemCount();
+            updateTotalPrice(cart);
         } catch (error) {
             console.error('Помилка при завантаженні кошика:', error);
         }
     }
+
 
     async function displayCartItemCount() {
         let countCArt = document.querySelector(".countCArt")
@@ -200,6 +229,7 @@
 
 
 
+
     var itemsPerPage;
 
     function setItemsPerPage() {
@@ -216,94 +246,167 @@
     setItemsPerPage()
     // Функція для виводу товарів в HTML
 
-    // Функція для рендерингу пагінації
-
-    // Функція для переходу на попередню сторінку
-    // function prevPage() {
-    //     if (currentPage > 1) {
-    //         currentPage--;
-    //         renderProducts();
-    //     }
-    // }
-
-    // // Функція для переходу на наступну сторінку
-    // function nextPage() {
-    //     var totalPages = Math.ceil(products.length / itemsPerPage);
-    //     if (currentPage < totalPages) {
-    //         currentPage++;
-    //         renderProducts();
-    //     }
-    // }
-
-    // function prevPage() {
-    //     if (currentPage > 1) {
-    //         currentPage--;
-    //         if (searchInput !== '') {
-    //             // Якщо введений пошук, викликаємо searchAndSort
-    //             searchAndSort();
-    //         } else {
-    //             // Якщо не введений пошук, викликаємо renderProducts
-    //             renderProducts();
-    //         }
-    //     }
-    // }
-
-    // // Функція для переходу на наступну сторінку
-    // function nextPage() {
-    //     var totalPages = Math.ceil(products.length / itemsPerPage);
-    //     if (currentPage < totalPages) {
-    //         currentPage++;
-    //         if (searchInput !== '') {
-    //             // Якщо введений пошук, викликаємо searchAndSort
-    //             searchAndSort();
-    //         } else {
-    //             // Якщо не введений пошук, викликаємо renderProducts
-    //             renderProducts();
-    //         }
-    //     }
-    //     updatePaginationButtonsVisibility();
-    // }
-
-    // function nextPageFilter(products) {
-    //     var totalPages = Math.ceil(products.length / itemsPerPage);
-    //     console.log(totalPages - 1)
-    //     if (currentPage < totalPages - 1) {
-    //         currentPage++;
-    //         if (searchInput !== '') {
-    //             // Якщо введений пошук, викликаємо searchAndSort
-    //             searchAndSort();
-    //         } else {
-    //             // Якщо не введений пошук, викликаємо renderProducts
-    //             renderProducts();
-    //         }
-    //     }
-    //     // updatePaginationButtonsVisibility();
-    // }
-
-
-
-    // Оновлення видимості стрілок пагінації
-    // function updatePaginationButtonsVisibility() {
-    //     var totalPages = Math.ceil(products.length / itemsPerPage);
-    //     var prevButton = document.getElementById('prev-button');
-    //     var nextButton = document.getElementById('next-button');
-
-    //     // Перевіряємо, чи потрібно приховати або показати стрілку "Previous"
-    //     if (currentPage === 1) {
-    //         prevButton.style.display = 'none';
-    //     } else {
-    //         prevButton.style.display = 'block';
-    //     }
-
-    //     // Перевіряємо, чи потрібно приховати або показати стрілку "Next"
-    //     if (currentPage === totalPages - 1) {
-    //         nextButton.style.display = 'none';
-    //     } else {
-    //         nextButton.style.display = 'block';
-    //     }
-    // }
-
     // Функція для оновлення інформації про поточну сторінку та загальну кількість сторінок
+
+    async function addToCartPopup(productId) {
+        var cart = await getCartFromLocalStorage();
+        var once = await getCartFromLocalStoragePopup();
+        var product = once.find(item => item.id === productId);
+
+        if (product) {
+            var existingCartItem = cart.find(item => item.id === productId);
+
+            if (existingCartItem) {
+                existingCartItem.quantity++;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    img: product.img,
+                    quantity: product.quantity
+                });
+            }
+
+            // Зберігаємо кошик в Local Storage
+            await saveCartToLocalStorage(cart);
+            // Оновлюємо вивід кошика
+            renderCart();
+        }
+        smt()
+        closeCart_2()
+    }
+
+    async function increaseQuantity_1(productId) {
+        var cart = await getCartFromLocalStoragePopup();
+        var quantityElement = document.getElementById(`quantity_1_${productId}`);
+        var priceElement = document.getElementById(`price_1_${productId}`);
+        var cartItem = cart.find(item => item.id === productId);
+
+        if (cartItem) {
+            cartItem.quantity++;
+            console.log(productId)
+            console.log(quantityElement)
+            // await saveCartToLocalStorage(cart);
+            // updateQuantityDisplay(productId);
+            quantityElement.innerHTML = cartItem.quantity;
+            priceElement.innerHTML = cartItem.quantity * cartItem.price;
+            // console.log(quantityElement.textContent)
+            // await updateQuantityDisplay(productId)
+            updateTotalPrice(cart);
+        }
+        await saveCartToLocalStoragePopup(cart);
+        displayCartItemCount();
+    }
+
+    // Функція для зменшення кількості товару в кошику
+    async function decreaseQuantity_1(productId) {
+        var cart = await getCartFromLocalStoragePopup();
+        var quantityElement = document.getElementById(`quantity_1_${productId}`);
+        var priceElement = document.getElementById(`price_1_${productId}`);
+        var cartItem = cart.find(item => item.id === productId);
+
+        if (cartItem) {
+            if (cartItem.quantity > 1) {
+                cartItem.quantity--;
+                quantityElement.innerHTML = cartItem.quantity;
+                priceElement.innerHTML = cartItem.quantity * cartItem.price;
+            } else {
+                cart = cart.filter(item => item.id !== productId);
+                await saveCartToLocalStorage(cart);
+                renderCart()
+            }
+
+            await saveCartToLocalStoragePopup(cart);
+            updateTotalPrice(cart);
+            displayCartItemCount();
+            // updateQuantityDisplay(productId);
+        }
+    }
+
+    // Функція для видалення товару з кошика
+    async function deleteQuantity_1(productId) {
+        var cart = await getCartFromLocalStoragePopup();
+        // var cartItem = cart.find(item => item.id === productId);
+        // delete productId
+        // await saveCartToLocalStorage(updatedCart);
+        // updateQuantityDisplay(productId);
+        cart = cart.filter(item => item.id !== productId);
+        await saveCartToLocalStoragePopup(cart);
+        renderCart();
+        updateTotalPrice(cart);
+    }
+
+    function getCartFromLocalStoragePopup() {
+        var cartString = localStorage.getItem('once');
+        return cartString ? JSON.parse(cartString) : [];
+    }
+
+    function saveCartToLocalStoragePopup(cart) {
+        localStorage.setItem('once', JSON.stringify(cart));
+    }
+
+    async function renderPopup(productId) {
+
+        var cart = await getCartFromLocalStoragePopup();
+        var product = products.find(item => item.id === productId);
+
+
+        let element = document.querySelector(".element")
+        let popup__header = document.querySelector("#element__header-name")
+        element.innerHTML = ``;
+        cart.push({
+            id: productId,
+            name: product.name,
+            price: product.price,
+            img: product.img,
+            ds: product.ds,
+            quantity: 1
+        });
+
+        saveCartToLocalStoragePopup(cart)
+
+        var cart = await getCartFromLocalStoragePopup();
+        var main = cart.find(item => item.id === productId);
+
+        // product.forEach(function (item) {
+        popup__header.innerHTML = ``;
+        popup__header.innerHTML = `<span onclick="closeCart_2()" class="close-popup">&times;</span>
+                            <h2>${main.name}</h2>`;
+
+        element.innerHTML = `
+                <div class="element__main">
+                                    <img style="width: 400px; height: 400px;" src="${main.img}" alt="">
+                                    <div class="element__main-info">
+                                        <div class="element__main-text">
+                                            <h4><span>ID: </span>${main.id}</h4>
+                                            <h2>${main.name}</h2>
+                                            <h3 id="price_1_${productId}">${main.price}</h3>
+                                        </div>
+
+                                        <div class="element__main-quantity">
+                                            <button onclick="increaseQuantity_1(${main.id})">+</button>
+                                            <h3 id="quantity_1_${productId}">${main.quantity}</h3>
+                                            <button onclick="decreaseQuantity_1(${main.id})">-</button>
+
+                                            <button class="delete"  onclick="deleteQuantity_1(${productId})">x</button>
+                                        </div>
+
+                                        <button class="addToCart" onclick="addToCartPopup(${productId})">В кошик</button>
+
+                                        <div class="element__main-ds">
+                                            <p>${main.ds}</p>
+                                        </div>
+                                    </div>
+                                </div>
+            `;
+        // })
+
+        toggleCart_2()
+
+
+
+    }
 
     function smt() {
         Swal.fire({
@@ -321,17 +424,57 @@
         });
     }
 
+    // Функція для створення текстового представлення кошика
+    function createCartText(cart) {
+        var cartText = 'Ваш кошик:\n\n';
+
+        cart.forEach(function (item) {
+            cartText += `ID: ${item.id}\nНазва: ${item.name}\nКількість: ${item.quantity}\nЦіна: ${item.price * item.quantity} грн\n\n`;
+        });
+
+        return cartText;
+    }
+
+    // Функція для відправлення текстового представлення кошика в Telegram
+    async function sendCartToTelegram() {
+        try {
+            var cart = await getCartFromLocalStorage();
+            var cartText = createCartText(cart);
+
+            const response = await fetch('../php/example.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `message=${encodeURIComponent(cartText)}`,
+            });
+
+            const data = await response.json();
+            console.log(data);
+
+            console.log('Кошик відправлено в Telegram:\n', cartText);
+        } catch (error) {
+            console.error('Помилка відправки кошика в Telegram:', error);
+        }
+    }
+
+    // Викликати функцію для відправлення кошика в Telegram
+    // sendCartToTelegram();
+
+
     // Функція для додавання товару в кошик
     async function addToCart(productId) {
         var cart = await getCartFromLocalStorage();
         var product = products.find(item => item.id === productId);
+        console.log()
 
         if (product) {
             var existingCartItem = cart.find(item => item.id === productId);
 
             if (existingCartItem) {
                 existingCartItem.quantity++;
-            } else {
+            }
+            if (cart.length <= 2) {
                 cart.push({
                     id: productId,
                     name: product.name,
@@ -339,14 +482,23 @@
                     img: product.img,
                     quantity: 1
                 });
+
+                smt()
+            }
+            if (cart.length > 2) {
+                Swal.fire({
+                    title: "Вибачте!!!",
+                    text: "В вашому кошику вже забагато товарів!!!",
+                    icon: "error"
+                })
             }
 
             // Зберігаємо кошик в Local Storage
             await saveCartToLocalStorage(cart);
+            await sendCartDataToServer()
             // Оновлюємо вивід кошика
             renderCart();
         }
-        smt()
     }
 
     // Функція для отримання даних з Local Storage
@@ -391,6 +543,7 @@
             updateTotalPrice(cart);
         }
         await saveCartToLocalStorage(cart);
+        displayCartItemCount();
     }
 
     // Функція для зменшення кількості товару в кошику
@@ -413,6 +566,7 @@
 
             await saveCartToLocalStorage(cart);
             updateTotalPrice(cart);
+            displayCartItemCount();
             // updateQuantityDisplay(productId);
         }
     }
@@ -426,7 +580,8 @@
         // updateQuantityDisplay(productId);
         cart = cart.filter(item => item.id !== productId);
         await saveCartToLocalStorage(cart);
-        renderCart()
+        renderCart();
+        updateTotalPrice(cart);
     }
     // Функція для отримання кошика з Local Storage
     function getCartFromLocalStorage() {
@@ -467,6 +622,36 @@
         var overlay = document.getElementById('overlay');
         cartPopup.style.display = 'none';
         overlay.style.display = 'none';
+    }
+
+    function toggleCart_2() {
+        var cartPopup = document.getElementById('cartPopup_1');
+        var overlay_1 = document.getElementById('overlay_1');
+        if (cartPopup.style.display === 'none' || cartPopup.style.display === '') {
+            cartPopup.style.display = 'block';
+            overlay_1.style.display = 'block';
+        } else {
+            cartPopup.style.display = 'none';
+            overlay_1.style.display = 'none';
+        }
+    }
+
+    // Функція для закриття popup кошика та фону
+    async function closeCart_2() {
+        var cartPopup = document.getElementById('cartPopup_1');
+        var overlay_1 = document.getElementById('overlay_1');
+        cartPopup.style.display = 'none';
+        overlay_1.style.display = 'none';
+
+        // localStorage.clear('once')
+
+        // var cart = await getCartFromLocalStoragePopup();
+        // var cartItem = cart.find(item => item.id === productId);
+        // delete productId
+        // await saveCartToLocalStorage(updatedCart);
+        // updateQuantityDisplay(productId);
+        // cart = cart.filter(item => item.id !== productId);
+        // await saveCartToLocalStoragePopup(cart);
     }
 
     function calculateTotalPrice(cart) {
@@ -594,7 +779,7 @@
     </div>
     <div class="product-details">
         <span class="product-catagory">${product.catagory}</span>
-        <h4><a href="">${product.name}</a></h4>
+        <h4 onclick="renderPopup(${product.id})">${product.name}</h4>
         <p>${product.about}</p>
         <div class="product-bottom-details">
             <div class="product-price"><small>600UAN</small>${product.price}UAN</div>
