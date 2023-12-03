@@ -167,42 +167,57 @@
 
         try {
             var cart = await getCartFromLocalStorage();
+            console.log(cart.length)
 
-            cart.forEach(function (item) {
-                var cartItemElement = document.createElement('li');
-                cartItemElement.className = 'cartItem';
-                cartItemElement.innerHTML = `                    
-                <div class="popup__main">
-                    <img src="${item.img}" alt="">
-                    <div class="popup__main-text">
-                        <h3>ID: ${item.id}</h3>
-                        <h2>${item.name}</h2>
-                        <h3 id="price_${item.id}">${item.price * item.quantity}</h3>
-                    </div>
-                    <div class="popup__main-quantity">
-                        <button onclick="increaseQuantity(${item.id})">+</button>
-                        <h3 id="quantity_${item.id}">${item.quantity}</h3>
-                        <button onclick="decreaseQuantity(${item.id})">-</button>
-                        <button class="delete"  onclick="deleteQuantity(${item.id})">x</button>
-                    </div>
-                </div>`;
+            if (cart.length >= 1) {
+                cart.forEach(function (item) {
+                    var cartItemElement = document.createElement('li');
+                    cartItemElement.className = 'cartItem';
+                    cartItemElement.innerHTML = `                    
+                    <div class="popup__main">
+                        <img src="${item.img}" alt="">
+                        <div class="popup__main-text">
+                            <h3>ID: ${item.id}</h3>
+                            <h2>${item.name}</h2>
+                            <h3 id="price_${item.id}">${item.price * item.quantity}</h3>
+                        </div>
+                        <div class="popup__main-quantity">
+                            <button onclick="increaseQuantity(${item.id})">+</button>
+                            <h3 id="quantity_${item.id}">${item.quantity}</h3>
+                            <button onclick="decreaseQuantity(${item.id})">-</button>
+                            <button class="delete"  onclick="deleteQuantity(${item.id})">x</button>
+                        </div>
+                    </div>`;
 
-                cartItemsContainer.appendChild(cartItemElement);
+                    cartItemsContainer.appendChild(cartItemElement);
 
-                // Отримайте дані для відправки в телеграм (приклад)
-                const telegramData = {
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity
-                };
+                    // Отримайте дані для відправки в телеграм (приклад)
+                    const telegramData = {
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        quantity: item.quantity
+                    };
 
-                // Відправте дані в телеграм для кожного елемента кошика
-                // sendTelegramMessage(telegramData);
-            });
+                    // Відправте дані в телеграм для кожного елемента кошика
+                    // sendTelegramMessage(telegramData);
+                });
 
-            displayCartItemCount();
-            updateTotalPrice(cart);
+                displayCartItemCount();
+                updateTotalPrice(cart);
+
+            } else {
+                closeCart()
+
+                Swal.fire({
+                    title: "Ваш кошик пустий",
+                    text: "Добвте щось в кошик",
+                    icon: "error"
+                })
+
+            }
+
+
         } catch (error) {
             console.error('Помилка при завантаженні кошика:', error);
         }
@@ -211,11 +226,15 @@
 
     async function displayCartItemCount() {
         let countCArt = document.querySelector(".countCArt")
+        let countCArt_burger = document.querySelector(".countCArt_burger")
+
         try {
             var cart = await getCartFromLocalStorage();
             var itemCount = cart.reduce((total, item) => total + item.quantity, 0);
             countCArt.innerHTML = ``;
             countCArt.innerHTML = `${itemCount}`;
+            countCArt_burger.innerHTML = ``;
+            countCArt_burger.innerHTML = `${itemCount}`;
 
             console.log('Кількість елементів в кошику:', itemCount);
         } catch (error) {
@@ -408,6 +427,24 @@
 
     }
 
+    function submitForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        // var formData = {
+        //     name: name,
+        //     email: email,
+        //     phone: phone
+        // };
+
+        var formData = `Імя: ${name}\nПошта: ${email}\nНомер: ${phone}\n\n`;
+
+        return formData
+
+        // sendTelegramMessage(formData);
+    }
+
     function smt() {
         Swal.fire({
             title: "Все Класно!!!",
@@ -425,8 +462,13 @@
     }
 
     // Функція для створення текстового представлення кошика
-    function createCartText(cart) {
-        var cartText = 'Ваш кошик:\n\n';
+    function createCartText() {
+        var cartString = localStorage.getItem('cart');
+        var cart = JSON.parse(cartString) || []; // Перетворюємо рядок у масив, або створюємо новий порожній масив
+
+        console.log(cart);
+
+        var cartText = 'Ваш кошик:\n';
 
         cart.forEach(function (item) {
             cartText += `ID: ${item.id}\nНазва: ${item.name}\nКількість: ${item.quantity}\nЦіна: ${item.price * item.quantity} грн\n\n`;
@@ -435,28 +477,103 @@
         return cartText;
     }
 
-    // Функція для відправлення текстового представлення кошика в Telegram
-    async function sendCartToTelegram() {
-        try {
-            var cart = await getCartFromLocalStorage();
-            var cartText = createCartText(cart);
 
-            const response = await fetch('../php/example.php', {
+    // Функція для відправлення текстового представлення кошика в Telegram
+    async function sendTelegramMessage(formData, cartData, price) {
+        try {
+            var message = {
+                text: JSON.stringify({
+                    formData: formData,
+                    cartData: cartData,
+                    price: price
+                })
+            };
+
+            var response = await fetch('https://api.telegram.org/bot6698256121:AAHHOjKT96IWgDJFylmZoDXTsA_wF9RqMCk/sendMessage', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json'
                 },
-                body: `message=${encodeURIComponent(cartText)}`,
+                body: JSON.stringify({
+                    chat_id: '@helly_store',
+                    text: formData + cartData + price
+                })
             });
 
-            const data = await response.json();
-            console.log(data);
-
-            console.log('Кошик відправлено в Telegram:\n', cartText);
+            if (response.ok) {
+                console.log('Дані та кошик успішно відправлені в Telegram!');
+                Swal.fire({
+                    title: "Все Круто!!!",
+                    text: "Ваше замовлення вже обробляє наш менеджер!!!",
+                    icon: "success"
+                })
+                localStorage.clear()
+                closeCart()
+                let toggle_delete = document.querySelector(".toggle_delete")
+                toggle_delete.addEventListener("click", () => {
+                    burger__block.classList.toggle('vision')
+                })
+            } else {
+                console.error('Помилка відправки даних та кошика в Telegram:', response.statusText);
+            }
         } catch (error) {
-            console.error('Помилка відправки кошика в Telegram:', error);
+            console.error('Помилка відправки даних та кошика в Telegram:', error);
         }
     }
+    async function sendContactMessage() {
+        try {
+            var name_contact = document.getElementById("name_contact").value
+            var number_contact = document.getElementById("number_contact").value
+            var email_contact = document.getElementById("email_contact").value
+            var message_contact = document.getElementById("message_contact").value
+
+            var mainContact = `Ім'я: ${name_contact}\n Номер: ${number_contact}\n Пошта: ${email_contact}\n Повідомлення: ${message_contact}\n`
+
+            var response = await fetch('https://api.telegram.org/bot6698256121:AAHHOjKT96IWgDJFylmZoDXTsA_wF9RqMCk/sendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: '@helly_store',
+                    text: mainContact
+                })
+            });
+
+            if (response.ok) {
+                console.log('Дані та кошик успішно відправлені в Telegram!');
+                Swal.fire({
+                    title: "Все Круто!!!",
+                    text: "Ваше замовлення вже обробляє наш менеджер!!!",
+                    icon: "success"
+                })
+                localStorage.clear()
+                closeCart()
+                let toggle_delete = document.querySelector(".toggle_delete")
+                toggle_delete.addEventListener("click", () => {
+                    burger__block.classList.toggle('vision')
+                })
+            } else {
+                console.error('Помилка відправки даних та кошика в Telegram:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Помилка відправки даних та кошика в Telegram:', error);
+        }
+    }
+
+    // При оновленні кошика
+    function updateCart() {
+        var cartString = localStorage.getItem('cart');
+        var cart = JSON.parse(cartString) || [];
+        console.log(cart)
+        var formData = submitForm(); // Отримайте дані з форми (визначте свою функцію)
+        var cartData = createCartText(); // Отримайте дані кошика (визначте свою функцію)
+        var price = updateTotalPrice(cart); // Отримайте дані кошика (визначте свою функцію)
+
+        // Відправка в Telegram
+        sendTelegramMessage(formData, cartData, price);
+    }
+
 
     // Викликати функцію для відправлення кошика в Telegram
     // sendCartToTelegram();
@@ -473,8 +590,7 @@
 
             if (existingCartItem) {
                 existingCartItem.quantity++;
-            }
-            if (cart.length <= 2) {
+            } else {
                 cart.push({
                     id: productId,
                     name: product.name,
@@ -482,22 +598,14 @@
                     img: product.img,
                     quantity: 1
                 });
-
-                smt()
-            }
-            if (cart.length > 2) {
-                Swal.fire({
-                    title: "Вибачте!!!",
-                    text: "В вашому кошику вже забагато товарів!!!",
-                    icon: "error"
-                })
             }
 
             // Зберігаємо кошик в Local Storage
             await saveCartToLocalStorage(cart);
-            await sendCartDataToServer()
             // Оновлюємо вивід кошика
             renderCart();
+
+            smt()
         }
     }
 
@@ -670,6 +778,8 @@
         console.log('Загальна ціна:', total);
         // Ваш код для оновлення загальної ціни на сторінці
         document.querySelector('#totalPrice').innerText = `Загальна ціна: ${total}`;
+
+        return total
     }
 
     function sort() {

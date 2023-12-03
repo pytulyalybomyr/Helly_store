@@ -58,8 +58,9 @@
                     <div class="burger__block-header">
                         <ul>
                             <li> <button onclick="toggleCart()" class="cart__button">
-                                    <div class="countCArt"></div><svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                        height="26" viewBox="0 0 30 26" fill="none">
+                                    <div class="countCArt countCArt_burger"></div><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="30" height="26" viewBox="0 0 30 26"
+                                        fill="none">
                                         <path
                                             d="M12.0281 24C12.0281 24.3956 11.9108 24.7822 11.691 25.1111C11.4713 25.44 11.1589 25.6964 10.7934 25.8478C10.428 25.9991 10.0259 26.0387 9.6379 25.9616C9.24993 25.8844 8.89357 25.6939 8.61386 25.4142C8.33416 25.1345 8.14368 24.7781 8.06651 24.3902C7.98934 24.0022 8.02894 23.6001 8.18032 23.2346C8.33169 22.8692 8.58804 22.5568 8.91694 22.3371C9.24583 22.1173 9.63251 22 10.0281 22C10.5585 22 11.0672 22.2107 11.4423 22.5858C11.8174 22.9609 12.0281 23.4696 12.0281 24ZM23.0281 22C22.6325 22 22.2458 22.1173 21.9169 22.3371C21.588 22.5568 21.3317 22.8692 21.1803 23.2346C21.0289 23.6001 20.9893 24.0022 21.0665 24.3902C21.1437 24.7781 21.3342 25.1345 21.6139 25.4142C21.8936 25.6939 22.2499 25.8844 22.6379 25.9616C23.0259 26.0387 23.428 25.9991 23.7934 25.8478C24.1589 25.6964 24.4713 25.44 24.691 25.1111C24.9108 24.7822 25.0281 24.3956 25.0281 24C25.0281 23.4696 24.8174 22.9609 24.4423 22.5858C24.0672 22.2107 23.5585 22 23.0281 22ZM28.9843 6.29375L25.4181 17.8825C25.2313 18.4968 24.8515 19.0346 24.3349 19.416C23.8184 19.7975 23.1927 20.0022 22.5506 20H10.5368C9.88554 19.9976 9.25258 19.7842 8.73271 19.3919C8.21285 18.9996 7.83406 18.4494 7.65308 17.8237L3.13058 2H1.02808C0.76286 2 0.508506 1.89464 0.320969 1.70711C0.133433 1.51957 0.0280762 1.26522 0.0280762 1C0.0280762 0.734784 0.133433 0.48043 0.320969 0.292893C0.508506 0.105357 0.76286 0 1.02808 0H3.13058C3.56484 0.00144056 3.98695 0.143485 4.33374 0.404872C4.68053 0.666259 4.93334 1.03293 5.05433 1.45L6.06808 5H28.0281C28.1846 4.99994 28.3389 5.03661 28.4786 5.10706C28.6184 5.17751 28.7396 5.27976 28.8326 5.40561C28.9256 5.53145 28.9878 5.67737 29.0142 5.83163C29.0405 5.98588 29.0303 6.14417 28.9843 6.29375ZM26.6743 7H6.63933L9.57558 17.275C9.63531 17.4839 9.76143 17.6676 9.93486 17.7984C10.1083 17.9292 10.3196 18 10.5368 18H22.5506C22.7646 18.0001 22.9729 17.9315 23.145 17.8044C23.3172 17.6773 23.444 17.4983 23.5068 17.2938L26.6743 7Z"
                                             fill="black" />
@@ -155,11 +156,11 @@
     </section>
     <section class="top">
         <div class="container">
-            <div class="top__header">
+            <div style="display: none !important;" class="top__header">
                 <h3>Топ Товарів</h3>
             </div>
 
-            <div class="top__main" id="top__main">
+            <div style="display: none !important;" class="top__main" id="top__main">
 
             </div>
             <!-- <div id="productsContainer"></div> -->
@@ -176,11 +177,11 @@
                             <div id="totalPrice"></div>
                         </div>
                         <form action="" method="post">
-                            <input placeholder="Ваш ПІБ" class="input-style" type="text">
-                            <input placeholder="Ваш email" class="input-style" type="email">
-                            <input placeholder="Ваш номер телефону" class="input-style" type="text">
-                            <button style="background: aliceblue; border-color: aliceblue;" class="input-style"
-                                type="submit">Підтвердити замовлення</button>
+                            <input placeholder="Ваш ПІБ" id="name" class="input-style" type="text">
+                            <input placeholder="Ваш email" id="email" class="input-style" type="email">
+                            <input placeholder="Ваш номер телефону" id="phone" class="input-style" type="text">
+                            <button onclick="updateCart()" style="background: aliceblue; border-color: aliceblue;"
+                                class="input-style" type="button">Підтвердити замовлення</button>
                         </form>
 
 
@@ -205,84 +206,13 @@
 
         </div>
     </section>
-    <section class="katalog">
-        <div class="container">
-            <div class="katalog__header">
-                <div class="logig">
-                    <div class="sorter">
-                        <label for="sort">Сортувати за:</label>
-                        <select id="sort" onchange="handleSortChange()">
-                            <option value="default">За замовчуванням</option>
-                            <option value="asc">За зростанням ціни</option>
-                            <option value="desc">За спаданням ціни</option>
-                        </select>
-                    </div>
-                    <div class="bord"></div>
-                    <div class="searcher">
-                        <label for="searchInput">Пошук:</label>
-                        <input type="text" id="searchInput" oninput="searchAndSort()"
-                            placeholder="Введіть назву товару">
-                        <button style="display: flex;
-                        align-items: center;
-                        gap: 7px;" onclick="searchAndSort()"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="13" viewBox="0 0 27 27" fill="none">
-                                    <path
-                                        d="M25.7351 24.7457L19.4764 18.4882C21.2904 16.3103 22.195 13.5169 22.0019 10.6891C21.8089 7.86126 20.533 5.21674 18.4398 3.30563C16.3466 1.39453 13.5972 0.363984 10.7635 0.428383C7.92984 0.492783 5.23008 1.64717 3.22586 3.65139C1.22163 5.65562 0.0672461 8.35538 0.00284627 11.189C-0.0615536 14.0227 0.968989 16.7721 2.88009 18.8653C4.7912 20.9586 7.43573 22.2344 10.2635 22.4275C13.0914 22.6205 15.8848 21.716 18.0626 19.9019L24.3201 26.1607C24.413 26.2536 24.5233 26.3273 24.6447 26.3776C24.7661 26.4278 24.8962 26.4537 25.0276 26.4537C25.159 26.4537 25.2891 26.4278 25.4105 26.3776C25.5319 26.3273 25.6422 26.2536 25.7351 26.1607C25.828 26.0678 25.9017 25.9575 25.952 25.8361C26.0023 25.7147 26.0282 25.5846 26.0282 25.4532C26.0282 25.3218 26.0023 25.1917 25.952 25.0703C25.9017 24.9489 25.828 24.8386 25.7351 24.7457ZM2.02763 11.4532C2.02763 9.67313 2.55547 7.93308 3.5444 6.45303C4.53334 4.97299 5.93894 3.81944 7.58348 3.13825C9.22801 2.45706 11.0376 2.27883 12.7834 2.6261C14.5293 2.97337 16.1329 3.83053 17.3916 5.0892C18.6503 6.34788 19.5074 7.95152 19.8547 9.69735C20.202 11.4432 20.0237 13.2528 19.3425 14.8973C18.6614 16.5419 17.5078 17.9475 16.0278 18.9364C14.5477 19.9253 12.8077 20.4532 11.0276 20.4532C8.64149 20.4505 6.35385 19.5015 4.66659 17.8142C2.97934 16.127 2.03028 13.8393 2.02763 11.4532Z"
-                                        fill="black" />
-                                </svg></span>Шукати</button>
-                    </div>
-                </div>
-
-
-
-
-                <h3>Каталог</h3>
-            </div>
-
-            <!-- <ul id="resultList"></ul> -->
-            <div id="productsContainer"></div>
-
-            <nav class="pagination-container" id="pagination">
-                <div class="prev-block">
-
-
-                </div>
-
-                <div id="paginationButtons" class="pagination-number">
-
-                </div>
-                <div class="next-block">
-
-                </div>
-
-            </nav>
-
-            <div class="popup_1">
-                <div id="overlay_1">
-                    <div id="cartPopup_1" class="cart-popup_1">
-                        <div class="popup__header" id="element__header-name">
-                            <span onclick="closeCart_2()" class="close-popup">&times;</span>
-                            <h2>Shopping Cart</h2>
-                        </div>
-
-                        <div class="element">
-
-                        </div>
-
-                        <!-- <div class="element"></div> -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </section>
     <section class="about">
         <div class="container">
             <div class="about__main">
                 <div class="about__text">
                     <h1>Про наш Магазин</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur. Adipiscing nec nulla sagittis id. Aliquet tristique velit
+                    <p>Lorem ipsum dolor sit amet consectetur. Adipiscing nec nulla sagittis id. Aliquet tristique
+                        velit
                         nec
                         auctor. Vel sit condimentum sed imperdiet interdum consequat risus libero. Varius et egestas
                         purus
@@ -317,9 +247,11 @@
                                     patternUnits="userSpaceOnUse" id="Polka_Dot_Pattern" height="69">
                                     <g>
                                         <polygon style="fill:none;"
-                                            points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896"></polygon>
+                                            points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896">
+                                        </polygon>
                                         <polygon style="fill:#F6BB60;"
-                                            points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896"></polygon>
+                                            points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896">
+                                        </polygon>
                                         <g>
                                             <path style="fill:#FFFFFF;"
                                                 d="M61.772-71.653c0.018,0.072,0.007,0.127-0.026,0.19c-0.053,0.101-0.112,0.062-0.165,0.128     c-0.05,0.062-0.099,0.276-0.079,0.362c-0.169,0.058-0.01,0.227-0.015,0.35c-0.002,0.05-0.041,0.105-0.045,0.161     c-0.01,0.119,0.017,0.266,0.068,0.37c0.097,0.198,0.268,0.413,0.435,0.544c0.19,0.148,0.365,0.572,0.608,0.631     c0.177,0.042,0.384-0.104,0.543-0.143c0.18-0.043,0.397,0.01,0.571-0.053c0.222-0.079,0.127-0.337,0.288-0.45     c0.104-0.074,0.287-0.01,0.406-0.051c0.2-0.069,0.339-0.263,0.376-0.46c0.016-0.082,0.01-0.145,0.039-0.221     c0.039-0.103,0.111-0.16,0.09-0.293c-0.01-0.062-0.052-0.12-0.064-0.187c-0.022-0.114,0.002-0.224,0-0.337     c-0.003-0.2,0.017-0.379-0.078-0.55c-0.38-0.688-1.236-0.929-1.975-0.789c-0.18,0.034-0.287,0.126-0.442,0.207     c-0.17,0.088-0.139,0.166-0.318,0.224c-0.081,0.026-0.216,0.124-0.215,0.224c0.001,0.115,0.005,0.051,0.012,0.169     c-0.021,0.011-0.021-0.005-0.03-0.025">
@@ -745,34 +677,99 @@
             </div>
         </div>
     </section>
+    <section class="katalog">
+        <div class="container">
+            <div class="katalog__header">
+                <div class="logig">
+                    <div class="sorter">
+                        <label for="sort">Сортувати за:</label>
+                        <select id="sort" onchange="handleSortChange()">
+                            <option value="default">За замовчуванням</option>
+                            <option value="asc">За зростанням ціни</option>
+                            <option value="desc">За спаданням ціни</option>
+                        </select>
+                    </div>
+                    <div class="bord"></div>
+                    <div class="searcher">
+                        <label for="searchInput">Пошук:</label>
+                        <input type="text" id="searchInput" oninput="searchAndSort()"
+                            placeholder="Введіть назву товару">
+                    </div>
+                </div>
+
+
+
+
+                <h3>Каталог</h3>
+            </div>
+
+            <!-- <ul id="resultList"></ul> -->
+            <div id="productsContainer"></div>
+
+            <nav class="pagination-container" id="pagination">
+                <div class="prev-block">
+
+
+                </div>
+
+                <div id="paginationButtons" class="pagination-number">
+
+                </div>
+                <div class="next-block">
+
+                </div>
+
+            </nav>
+
+            <div class="popup_1">
+                <div id="overlay_1">
+                    <div id="cartPopup_1" class="cart-popup_1">
+                        <div class="popup__header" id="element__header-name">
+                            <span onclick="closeCart_2()" class="close-popup">&times;</span>
+                            <h2>Shopping Cart</h2>
+                        </div>
+
+                        <div class="element">
+
+                        </div>
+
+                        <!-- <div class="element"></div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
     <section class="contact">
         <section class="contact-container">
             <div class="contact-logo">
                 <!-- <img style="width: 60px;" src="./img/logo.webp" alt=""> -->
             </div>
-            <form class=" contact-form" action="./php/process-form.php" method="post">
+            <form class=" contact-form">
                 <div class="heading">
                     <h2>Контакти</h2>
                     <p>Напиши нам!!!</p>
                 </div>
                 <div class="input">
                     <i class="fa-regular fa-user"></i>
-                    <input name="username" type="text" placeholder="ПІБ" />
+                    <input name="username" id="name_contact" type="text" placeholder="ПІБ" />
                 </div>
                 <div class="input">
                     <i class="fa-regular fa-envelope"></i>
-                    <input name="email" type="email" placeholder="Електрона пошта" />
+                    <input name="email" id="email_contact" type="email" placeholder="Електрона пошта" />
                 </div>
                 <div class="input">
                     <i class="fa-regular fa-envelope"></i>
-                    <input name="number" type="text" placeholder="Номер телефону" />
+                    <input name="number" id="number_contact" type="text" placeholder="Номер телефону" />
                 </div>
                 <div class="input">
                     <i class="fa-regular fa-message"></i>
-                    <textarea name="message" cols="30" rows="10" placeholder="Повідомлення"
+                    <textarea name="message" id="message_contact" cols="30" rows="10" placeholder="Повідомлення"
                         style="resize: none"></textarea>
                 </div>
-                <button class="button" type="submit">Відправити</button>
+                <button onclick="sendContactMessage()" class="button" type="button">Відправити</button>
             </form>
             <div class="contact-info">
                 <h3 class="heading">Інформація про нас</h3>
