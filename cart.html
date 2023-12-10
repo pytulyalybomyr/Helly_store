@@ -10,17 +10,17 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/style.min.css">
     <link rel="stylesheet" href="./css/reset.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.css">
+    <title>Helly Store</title>
 </head>
 
 <body>
-
     <header>
         <div class="header" id="header">
             <div class="container">
                 <div class="header__main">
-                    <img src="./img/logo.webp" alt="" class="header__logo">
-                    <nav class="header__nav-site">
+                    <img src="./img/logo.webp" alt="" class="header__logo wow bounceInLeft">
+                    <nav class="header__nav-site wow bounceInDown">
                         <ul>
                             <li>
                                 <h3 id="button1">Головна</h3>
@@ -36,7 +36,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <nav class="header__nav-app">
+                    <nav class="header__nav-app wow bounceInRight">
                         <ul>
                             <li> <button onclick="toggleCart()" class="cart__button">
                                     <div class="countCArt"></div><svg xmlns="http://www.w3.org/2000/svg" width="30"
@@ -50,7 +50,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="burger__button">
+                    <div class="burger__button wow bounceInRight">
                         <img style="width: 30px;" src="./img/burger-menu.svg" alt="">
                     </div>
                 </div>
@@ -119,6 +119,18 @@
 <script src="./js/scroll.js"></script>
 
 <script src="./js/cart__sender.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+
+<script>
+
+    $(function () {
+
+        new WOW().init();
+
+    });
+
+</script>
 
 
 

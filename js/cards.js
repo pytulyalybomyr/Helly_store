@@ -882,7 +882,7 @@
         currentProducts.forEach(function (product) {
             var productElement = document.createElement('div');
             productElement.className = 'product';
-            productElement.innerHTML = `<div class="product-card">
+            productElement.innerHTML = `<div class="product-card wow bounceInUp">
     <div class="badge">Топ</div>
     <div class="product-tumb">
         <img src="${product.img}" alt="">
